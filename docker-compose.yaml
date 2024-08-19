@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  node:
+    build: .
+    container_name: frontend
+    command: npm start
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/opt/app/
+    
