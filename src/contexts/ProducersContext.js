@@ -40,13 +40,15 @@ export const ProducersProvider = ({ children }) => {
                     totalArea: fazenda.area_total,
                     agriculturalArea: fazenda.area_agricultavel,
                     vegetationArea: fazenda.area_vegetacao,
-                    cultures: fazenda.culturas
+                    // cultures: fazenda.culturas
                 });
             });
 
-            const newProducer = await api.get(`/producers/${response.data.id}`);
-            setProducers([...producers, newProducer.data]);
+            const addedProducer = await api.get(`/producers/${response.data.id}`);
+            const result = addedProducer.data[0];
 
+            setProducers([...producers, result]);
+            return result.id;
         } catch (error) {
             console.error('Error adding producer:', error);
         }
@@ -75,7 +77,7 @@ export const ProducersProvider = ({ children }) => {
                         totalArea: fazenda.area_total,
                         agriculturalArea: fazenda.area_agricultavel,
                         vegetationArea: fazenda.area_vegetacao,
-                        cultures: fazenda.culturas
+                        // cultures: fazenda.culturas
                     });
                 }
                 else if (fazenda.id) {
@@ -86,7 +88,7 @@ export const ProducersProvider = ({ children }) => {
                         totalArea: fazenda.area_total,
                         agriculturalArea: fazenda.area_agricultavel,
                         vegetationArea: fazenda.area_vegetacao,
-                        cultures: fazenda.culturas
+                        // cultures: fazenda.culturas
 
                     });
                 }

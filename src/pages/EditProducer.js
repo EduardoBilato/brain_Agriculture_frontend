@@ -26,7 +26,6 @@ export default function EditProducer() {
   const handleUpdateProducer = useCallback(async (updatedProducerData) => {
     try {
       await updateProducer(id, updatedProducerData);
-
       navigate('/');
     } catch (error) {
       console.error('Erro ao criar produtor:', error);

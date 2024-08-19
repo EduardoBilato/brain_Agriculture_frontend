@@ -40,11 +40,11 @@ export default function ProducerForm({ initialProducerData, onSubmit }) {
         event.preventDefault();
 
         try {
+            await Promise.all(producerData.fazendas.map((farm) => FazendaSchema.validate(farm)));
+
             await ProdutorSchema.validate(producerData, { abortEarly: false });
 
-            await Promise.all(producerData.fazendas.map((farm) => FazendaSchema.validate(farm, { abortEarly: false })));
-
-            await onSubmit(producerData);
+            onSubmit(producerData);
 
         } catch (validationError) {
             if (validationError.inner) {
