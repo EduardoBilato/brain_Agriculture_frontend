@@ -19,7 +19,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-          repository: eduardobilato/brain-agriculture-frontend
+          repository: ${{ secrets.DOCKERHUB_USERNAME }}/brain-agriculture-frontend
           tags: latest
         env:
           PUBLIC_BACK_URL: ${{ secrets.PUBLIC_BACK_URL }}
